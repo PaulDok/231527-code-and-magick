@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 window.renderStatistics = function (ctx, names, times) {
   // draw a shadow
@@ -54,5 +54,5 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = '#000';
     ctx.fillText(time.toFixed(0), histoX + i * (columnWidth + columnSpacing), histoBottomY - height - 5);
     ctx.fillText(name, histoX + i * (columnWidth + columnSpacing), histoTextY);
-  };
-}
+  }
+};
