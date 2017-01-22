@@ -1,4 +1,6 @@
-window.renderStatistics = function(ctx, names, times) {
+'use strict'
+
+window.renderStatistics = function (ctx, names, times) {
   // draw a shadow
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7';
   ctx.fillRect(110, 20, 420, 270);
@@ -32,12 +34,12 @@ window.renderStatistics = function(ctx, names, times) {
   var columnSpacing = 50;
 
   // draw individual results in a loop
-  for (var i = 0; i < times.length; i++) {
+  for (i = 0; i < times.length; i++) {
     var name = names[i];
-    var time = times[i];
+    time = times[i];
     var height = scale * time;
 
-    if (name == 'Вы') {
+    if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       // Поскольку в задании сказано
@@ -46,11 +48,11 @@ window.renderStatistics = function(ctx, names, times) {
       ctx.fillStyle = 'hsl(240,' + Math.floor(Math.random() * 100) + '%,50%)';
     }
     ctx.fillRect(histoX + i * (columnWidth + columnSpacing),
-      histoBottomY - height,
-      columnWidth,
-      height);
+        histoBottomY - height,
+        columnWidth,
+        height);
     ctx.fillStyle = '#000';
     ctx.fillText(time.toFixed(0), histoX + i * (columnWidth + columnSpacing), histoBottomY - height - 5);
     ctx.fillText(name, histoX + i * (columnWidth + columnSpacing), histoTextY);
-  }
+  };
 }
