@@ -44,7 +44,7 @@ var drawColumnAndScore = function (ctx, i, name, time, histoX, histoBottomY, col
   var y = histoBottomY - height;
 
   // draw column
-  var fillColor = getRandomColor (name);
+  var fillColor = getRandomColor(name);
   drawRect(ctx, x, y, columnWidth, height, fillColor, 'rgba(0, 0, 0, 0.7)');
 
   // print name and score
