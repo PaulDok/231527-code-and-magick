@@ -5,11 +5,11 @@ var setupOverlay = document.getElementsByClassName('setup')[0];
 var setupOpenButton = document.getElementsByClassName('setup-open')[0];
 var setupCloseButton = document.getElementsByClassName('setup-close')[0];
 
-var showSetupHandler = function() {
+var showSetupHandler = function () {
   setupOverlay.classList.remove('invisible');
 };
 
-var closeSetupHandler = function() {
+var closeSetupHandler = function () {
   setupOverlay.classList.add('invisible');
 };
 
@@ -45,12 +45,12 @@ var fireballColorOptions = [
   '#e6e848'
 ];
 
-var getRandomValueFromList = function(list) {
+var getRandomValueFromList = function (list) {
   var randomListIndex = Math.floor(Math.random() * list.length);
   return list[randomListIndex];
 };
 
-var getNewColor = function(current, colorList) {
+var getNewColor = function (current, colorList) {
   // Make sure the color is different from current one
   var newColor = '';
   do {
@@ -59,12 +59,12 @@ var getNewColor = function(current, colorList) {
   return newColor;
 };
 
-var changeItemFillColorRandomly = function(item, colorList) {
+var changeItemFillColorRandomly = function (item, colorList) {
   var newColor = getNewColor(item.style.fill, colorList);
   item.style.fill = newColor;
 };
 
-var changeItemBackgroundColorRandomly = function(item, colorList) {
+var changeItemBackgroundColorRandomly = function (item, colorList) {
   var newColor = getNewColor(item.style.background, colorList);
   item.style.background = newColor;
 };
