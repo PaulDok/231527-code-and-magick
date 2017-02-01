@@ -16,13 +16,13 @@ var ESCAPE_KEY_CODE = 27;
 var showSetup = function () {
   setupOverlay.classList.remove('invisible');
   document.addEventListener('keydown', setupKeydownHandler);
-  setupOpenButton.setAttribute("aria-pressed", true);
+  setupOpenButton.setAttribute('aria-pressed', true);
 };
 
 var hideSetup = function () {
   setupOverlay.classList.add('invisible');
   document.removeEventListener('keydown', setupKeydownHandler);
-  setupOpenButton.setAttribute("aria-pressed", false);
+  setupOpenButton.setAttribute('aria-pressed', false);
 };
 
 var isActivateEvent = function (event) {
