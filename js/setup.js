@@ -26,11 +26,11 @@ var hideSetup = function () {
 };
 
 var isActivateEvent = function (event) {
-  return event.keyCode && event.keyCode === ENTER_KEY_CODE;
+  return event && event.keyCode === ENTER_KEY_CODE;
 };
 
 var isEscapeEvent = function (event) {
-  return event.keyCode && event.keyCode === ESCAPE_KEY_CODE;
+  return event && event.keyCode === ESCAPE_KEY_CODE;
 };
 
 var setupKeydownHandler = function (event) {
