@@ -85,42 +85,6 @@ var fireballColorOptions = [
   '#e6e848'
 ];
 
-var getRandomValueFromList = function (list) {
-  var randomListIndex = Math.floor(Math.random() * list.length);
-  return list[randomListIndex];
-};
-
-var getNewColor = function (current, colorList) {
-  // Make sure the color is different from current one
-  var newColor = '';
-  do {
-    newColor = getRandomValueFromList(colorList);
-  } while (newColor === current);
-  return newColor;
-};
-
-var changeItemFillColorRandomly = function (item, colorList) {
-  var newColor = getNewColor(item.style.fill, colorList);
-  item.style.fill = newColor;
-};
-
-var changeItemBackgroundColorRandomly = function (item, colorList) {
-  var newColor = getNewColor(item.style.background, colorList);
-  item.style.background = newColor;
-};
-
-var changeCoatColor = function () {
-  changeItemFillColorRandomly(coat, coatColorOptions);
-};
-
-var changeEyesColor = function () {
-  changeItemFillColorRandomly(eyes, eyeColorOptions);
-};
-
-var changeFireballColor = function () {
-  changeItemBackgroundColorRandomly(fireball, fireballColorOptions);
-};
-
-coat.addEventListener('click', changeCoatColor);
-eyes.addEventListener('click', changeEyesColor);
-fireball.addEventListener('click', changeFireballColor);
+colorizeElement(coat, coatColorOptions, 'fill');
+colorizeElement(eyes, eyeColorOptions, 'fill');
+colorizeElement(fireball, fireballColorOptions, 'background');
