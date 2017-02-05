@@ -1,6 +1,6 @@
 'use strict';
 
-window.utils = {
+var window.utils = {
   getRandomElement: function (array) {
     var randomArrayIndex = Math.floor(Math.random() * array.length);
     return array[randomArrayIndex];

@@ -1,6 +1,6 @@
 'use strict';
 
-window.colorizeElement = function (element, colors, property) {
+var window.colorizeElement = function (element, colors, property) {
   var currentPropertyValue = element.style[property];
   var ENTER_KEY_CODE = 13;
 
