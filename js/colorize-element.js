@@ -1,6 +1,6 @@
 'use strict';
 
-var window.colorizeElement = function (element, colors, property) {
+window.colorizeElement = function (element, colors, property) {
   var currentPropertyValue = element.style[property];
   var ENTER_KEY_CODE = 13;
 
@@ -11,7 +11,7 @@ var window.colorizeElement = function (element, colors, property) {
   var randomizeElementColor = function () {
     var newPropertyValue = null;
     while (!newPropertyValue || newPropertyValue === currentPropertyValue) {
-      newPropertyValue = utils.getRandomElementExcept(colors, currentPropertyValue);
+      newPropertyValue = window.utils.getRandomElementExcept(colors, currentPropertyValue);
     }
     currentPropertyValue = newPropertyValue;
     element.style[property] = currentPropertyValue;

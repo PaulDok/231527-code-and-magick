@@ -85,6 +85,6 @@ var fireballColorOptions = [
   '#e6e848'
 ];
 
-colorizeElement(coat, coatColorOptions, 'fill');
-colorizeElement(eyes, eyeColorOptions, 'fill');
-colorizeElement(fireball, fireballColorOptions, 'background');
+window.colorizeElement(coat, coatColorOptions, 'fill');
+window.colorizeElement(eyes, eyeColorOptions, 'fill');
+window.colorizeElement(fireball, fireballColorOptions, 'background');
