@@ -7,10 +7,10 @@ window.utils = {
   },
 
   getRandomElementExcept: function (array, reference) {
-    var newElement = null;
-    do {
+    var newElement = this.getRandomElement(array);
+    while (newElement === reference) {
       newElement = this.getRandomElement(array);
-    } while (newElement === reference);
+    }
     return newElement;
   }
 };

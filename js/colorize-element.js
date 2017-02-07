@@ -9,11 +9,7 @@ window.colorizeElement = function (element, colors, property) {
   };
 
   var randomizeElementColor = function () {
-    var newPropertyValue = null;
-    while (!newPropertyValue || newPropertyValue === currentPropertyValue) {
-      newPropertyValue = window.utils.getRandomElementExcept(colors, currentPropertyValue);
-    }
-    currentPropertyValue = newPropertyValue;
+    currentPropertyValue = window.utils.getRandomElementExcept(colors, currentPropertyValue);
     element.style[property] = currentPropertyValue;
   };
 
