@@ -3,12 +3,18 @@
 (function () {
   // Variables - form elements
   var setupOverlay = document.getElementsByClassName('setup')[0];
-  var setupOpenButton = document.getElementsByClassName('setup-open')[0];
+  var setupOpenButton = document.getElementsByClassName('setup-open-icon')[0];
   var setupCloseButton = setupOverlay.getElementsByClassName('setup-close')[0];
   var setupSubmitButton = setupOverlay.getElementsByClassName('setup-submit')[0];
   var coat = document.getElementById('wizard-coat');
   var eyes = document.getElementById('wizard-eyes');
   var fireball = setupOverlay.getElementsByClassName('setup-fireball-wrap')[0];
+
+  var onSetupHide = null;
+
+  var onKeySetupHide = function () {
+    setupOpenButton.focus();
+  };
 
   var ENTER_KEY_CODE = 13;
   var ESCAPE_KEY_CODE = 27;
@@ -24,6 +30,11 @@
     setupOverlay.classList.add('invisible');
     document.removeEventListener('keydown', setupKeydownHandler);
     setupOpenButton.setAttribute('aria-pressed', false);
+
+    if (typeof onSetupHide === 'function') {
+      onSetupHide();
+    }
+    onSetupHide = null;
   };
 
   var isActivateEvent = function (event) {
@@ -44,6 +55,7 @@
     if (isActivateEvent(event)) {
       showSetup();
     }
+    onSetupHide = onKeySetupHide;
   };
 
   var hideSetupOnEnterHandler = function (event) {
@@ -86,8 +98,25 @@
     '#e6e848'
   ];
 
-  window.colorizeElement(coat, coatColorOptions, 'fill');
-  window.colorizeElement(eyes, eyeColorOptions, 'fill');
-  window.colorizeElement(fireball, fireballColorOptions, 'background');
-})();
+  var colorizeLogic = function (element, colors, property) {
+    var currentPropertyValue = element.style[property];
 
+    var randomizeElementColor = function () {
+      currentPropertyValue = window.utils.getRandomElementExcept(colors, currentPropertyValue);
+      element.style[property] = currentPropertyValue;
+    };
+
+    var randomizeElementColorOnEnter = function (event) {
+      if (isActivateEvent(event)) {
+        randomizeElementColor();
+      }
+    };
+
+    element.addEventListener('click', randomizeElementColor);
+    element.addEventListener('keydown', randomizeElementColorOnEnter);
+  };
+
+  window.colorizeElement(colorizeLogic(coat, coatColorOptions, 'fill'));
+  window.colorizeElement(colorizeLogic(eyes, eyeColorOptions, 'fill'));
+  window.colorizeElement(colorizeLogic(fireball, fireballColorOptions, 'background'));
+})();
