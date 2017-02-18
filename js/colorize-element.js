@@ -1,14 +1,25 @@
 'use strict';
 
 window.colorizeElement = (function () {
-  var ENTER_KEY_CODE = 13;
-  var colorizeLogic = null;
+  return function (element, colors, callback) {
+    var currentColorValue = element.style.fill;
+    if (!colors.includes(currentColorValue)) {
+      currentColorValue = element.style.backgroundColor;
+    }
 
-  var isActivateEvent = function (event) {
-    return event && event.keyCode === ENTER_KEY_CODE;
-  };
+    var randomizeElementColor = function () {
+      currentColorValue = window.utils.getRandomElementExcept(colors, currentColorValue);
+      callback(element, currentColorValue);
+    };
 
-  return function (cb) {
-    colorizeLogic = cb;
+    var randomizeElementColorOnEnter = function (event) {
+      if (window.eventChecker.isActivateEvent(event)) {
+        randomizeElementColor();
+        callback(element, currentColorValue);
+      }
+    };
+
+    element.addEventListener('click', randomizeElementColor);
+    element.addEventListener('keydown', randomizeElementColorOnEnter);
   };
 })();
