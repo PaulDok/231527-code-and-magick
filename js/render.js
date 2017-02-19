@@ -7,7 +7,7 @@ window.render = (function () {
   var changeIdToClass = function (node) {
     var id = node.id;
     if (id) {
-      node.removeAttribute("id");
+      node.removeAttribute('id');
       node.classList.add(id);
     }
   };
