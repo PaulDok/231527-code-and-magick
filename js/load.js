@@ -4,10 +4,10 @@ window.load = (function () {
   return function (url, onLoad) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load', function (evt) {
-      if (evt.target.status >= 400) {
-        errorHandler('Failed to load data. Server returned status: ' + evt.target.status);
-      } else if (evt.target.status >= 200) {
+      if (evt.target.status >= 200) {
         onLoad(evt.target.response);
+      } else {
+        onLoad([]);
       }
     });
 
