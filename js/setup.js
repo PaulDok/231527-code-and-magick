@@ -22,10 +22,7 @@
     setupOverlay.classList.remove('invisible');
     document.addEventListener('keydown', setupKeydownHandler);
     setupOpenButton.setAttribute('aria-pressed', true);
-
-    if (typeof onHideCallback === 'function') {
-      onSetupHide = onHideCallback;
-    }
+    onSetupHide = onHideCallback;
   };
 
   var hideSetup = function () {
@@ -50,13 +47,17 @@
     onSetupHide = onKeySetupHide;
   };
 
+  var showSetupOnClickHandler = function () {
+    showSetup(noop);
+  };
+
   var hideSetupOnEnterHandler = function (event) {
     if (window.eventChecker.isActivateEvent(event)) {
       hideSetup();
     }
   };
 
-  setupOpenButton.addEventListener('click', showSetup);
+  setupOpenButton.addEventListener('click', showSetupOnClickHandler);
   setupCloseButton.addEventListener('click', hideSetup);
   setupSubmitButton.addEventListener('click', hideSetup);
 
@@ -73,7 +74,7 @@
     element.style.backgroundColor = color;
   };
 
-  window.colorizeElement(coat, window.colors.coatColorOptions, fillElement);
-  window.colorizeElement(eyes, window.colors.eyeColorOptions, fillElement);
-  window.colorizeElement(fireball, window.colors.fireballColorOptions, changeElementBackground);
+  window.colorizeElement(coat, window.colors.coatColorOptions, coat.style.fill, fillElement);
+  window.colorizeElement(eyes, window.colors.eyeColorOptions, eyes.style.fill, fillElement);
+  window.colorizeElement(fireball, window.colors.fireballColorOptions, fireball.style.backgroundColor, changeElementBackground);
 })();

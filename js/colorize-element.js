@@ -1,12 +1,7 @@
 'use strict';
 
 window.colorizeElement = (function () {
-  return function (element, colors, callback) {
-    var currentColorValue = element.style.fill;
-    if (!colors.includes(currentColorValue)) {
-      currentColorValue = element.style.backgroundColor;
-    }
-
+  return function (element, colors, currentColorValue, callback) {
     var randomizeElementColor = function () {
       currentColorValue = window.utils.getRandomElementExcept(colors, currentColorValue);
       callback(element, currentColorValue);
