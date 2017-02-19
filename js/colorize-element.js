@@ -1,23 +1,16 @@
 'use strict';
 
 window.colorizeElement = (function () {
-  var ENTER_KEY_CODE = 13;
-
-  var isActivateEvent = function (event) {
-    return event && event.keyCode === ENTER_KEY_CODE;
-  };
-
-  return function (element, colors, property) {
-    var currentPropertyValue = element.style[property];
-
+  return function (element, colors, currentColorValue, callback) {
     var randomizeElementColor = function () {
-      currentPropertyValue = window.utils.getRandomElementExcept(colors, currentPropertyValue);
-      element.style[property] = currentPropertyValue;
+      currentColorValue = window.utils.getRandomElementExcept(colors, currentColorValue);
+      callback(element, currentColorValue);
     };
 
     var randomizeElementColorOnEnter = function (event) {
-      if (isActivateEvent(event)) {
+      if (window.eventChecker.isActivateEvent(event)) {
         randomizeElementColor();
+        callback(element, currentColorValue);
       }
     };
 
