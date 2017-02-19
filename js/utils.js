@@ -14,7 +14,23 @@ window.utils = (function () {
     return newElement;
   };
 
+  var selectRandomPartOfArray = function (all, number) {
+    var i = 0;
+    var selectedArray = [];
+    var lastElement = null;
+    while (i < number) {
+      var newElement = getRandomElementExcept(all, lastElement);
+      if (!selectedArray.includes(newElement)) {
+        lastElement = newElement;
+        selectedArray.push(newElement);
+        i++;
+      }
+    }
+    return selectedArray;
+  };
+
   return {
-    getRandomElementExcept: getRandomElementExcept
+    getRandomElementExcept: getRandomElementExcept,
+    selectRandomPartOfArray: selectRandomPartOfArray
   };
 })();

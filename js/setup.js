@@ -23,6 +23,7 @@
     document.addEventListener('keydown', setupKeydownHandler);
     setupOpenButton.setAttribute('aria-pressed', true);
     onSetupHide = onHideCallback;
+    window.load('https://intensive-javascript-server-myophkugvq.now.sh/code-and-magick/data', updateLoadedWizards);
   };
 
   var hideSetup = function () {
@@ -68,13 +69,46 @@
   // Elements coloring
   var fillElement = function (element, color) {
     element.style.fill = color;
+    setDelayedTimer();
   };
 
   var changeElementBackground = function (element, color) {
     element.style.backgroundColor = color;
+    setDelayedTimer();
   };
 
   window.colorizeElement(coat, window.colors.coatColorOptions, coat.style.fill, fillElement);
   window.colorizeElement(eyes, window.colors.eyeColorOptions, eyes.style.fill, fillElement);
   window.colorizeElement(fireball, window.colors.fireballColorOptions, fireball.style.backgroundColor, changeElementBackground);
+
+  // Display of other wizards
+  var similarMagesDiv = setupOverlay.getElementsByClassName('setup-similar')[0];
+  var wizards = null;
+  var wizardsToDisplay = null;
+  var numberOfWizardsToDisplay = 5;
+  var timer = null;
+
+  var setDelayedTimer = function () {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(updateDisplayedWizards, 5000);
+  };
+
+  var updateDisplayedWizards = function () {
+    wizardsToDisplay = window.utils.selectRandomPartOfArray(wizards, numberOfWizardsToDisplay);
+
+    similarMagesDiv.innerHTML = '';
+    var fragment = document.createDocumentFragment();
+    wizardsToDisplay.forEach(function (wizard) {
+      fragment.appendChild(window.render(wizard));
+    });
+
+    similarMagesDiv.appendChild(fragment);
+  };
+
+  var updateLoadedWizards = function (data) {
+    wizards = data;
+    updateDisplayedWizards();
+  };
 })();

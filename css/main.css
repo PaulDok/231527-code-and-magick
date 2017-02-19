@@ -670,12 +670,25 @@ input[type=radio]:checked + .review-mark-label {
   border-right-width: 1px;
 }
 
+.setup-similar {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  width: 325px;
+  height: 65px;
+}
+
+.setup-similar-mage {
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
 .setup-submit {
   position: absolute;
-  left: 50%;
+  right: 80px;
   bottom: 30px;
-
-  transform: translateX(-50%);
 
   background: #da641a;
   color: #fff;
