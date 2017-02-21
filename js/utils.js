@@ -20,7 +20,7 @@ window.utils = (function () {
     var lastElement = null;
     while (i < number) {
       var newElement = getRandomElementExcept(all, lastElement);
-      if (!selectedArray.includes(newElement)) {
+      if (selectedArray.indexOf(newElement) === -1) {
         lastElement = newElement;
         selectedArray.push(newElement);
         i++;

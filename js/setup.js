@@ -89,9 +89,7 @@
   var timer = null;
 
   var setDelayedTimer = function () {
-    if (timer) {
-      clearTimeout(timer);
-    }
+    clearTimeout(timer);
     timer = setTimeout(updateDisplayedWizards, 5000);
   };
 
